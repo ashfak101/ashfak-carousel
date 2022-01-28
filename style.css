@@ -1,0 +1,6 @@
+.slider {
+  overflow: auto;
+  position: relative;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+}
