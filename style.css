@@ -1,6 +1,54 @@
 .slider {
-  overflow: auto;
+  text-align: center;
+
   position: relative;
   -ms-touch-action: pan-y;
   touch-action: pan-y;
+
+  margin: 0 auto;
+}
+
+.item {
+  width: 50%;
+  height: 50%;
+  background-color: aqua;
+  font-size: 60px;
+}
+
+.as-prev-arrow {
+  position: absolute;
+  left: 10px;
+  z-index: 10;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+}
+.as-next-arrow {
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+}
+.as-active {
+  color: rgb(173, 10, 10);
+}
+.as-nav {
+  text-align: center;
+  margin: 20px;
+  color: yellow;
+}
+.as-nav a {
+  margin: 10px;
+  text-decoration: none;
+  font-size: 20px;
+}
+.items {
+  font-size: 10px;
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
