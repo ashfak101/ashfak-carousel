@@ -28,7 +28,6 @@
         interval: 5000,
         keyboard: true,
         nextLabel: "Next ",
-        // pauseOnHover: true,
         prevLabel: "Previous ",
         reverse: false,
         showBullets: true,
@@ -39,7 +38,6 @@
 
     options = $.extend(defaults, options);
 
-    // Setup the slides
     if (orgNumSlides > 1) {
       slides.eq(0).clone().addClass("clone").appendTo(slider);
       slides
@@ -55,13 +53,10 @@
 
     slides = slider.children();
     numSlides = slides.length;
-
-    // CSS setup
     slides.wrapAll('<div class="as-slide-inner"></div>').css("width", width);
     inner = slider.css("overflow", "hidden").find(".as-slide-inner");
 
     if (options.animation === "fade") {
-      // Properties are quoted for consistency since "float" will trigger an error when the script is minified (if unquoted)
       slides
         .css({
           display: "none",
@@ -89,8 +84,6 @@
       float: "left",
       position: "relative",
     });
-
-    // Add the arrows
     if (options.showControls && orgNumSlides > 1) {
       slider.prepend(
         '<a href="#" class="as-prev-arrow" title="LABEL"><i class="fas fa-arrow-left"></i></a>'.replace(
@@ -119,8 +112,6 @@
         }
       });
     }
-
-    // Add navigation bullets
     if (options.showBullets && orgNumSlides > 1) {
       let i,
         active,
@@ -136,7 +127,7 @@
         nav.append('<a href="#"' + active + ">" + i + "</a>");
       }
 
-      nav.on("click.as", "a", function (e) {
+      nav.on("click", "a", function (e) {
         let index = $(this).index();
 
         e.preventDefault();
@@ -152,24 +143,9 @@
 
       slider.after(nav);
     }
-
-    // if (options.pauseOnHover) {
-    //   slider
-    //     .on("mouseenter", function () {
-    //       pause();
-    //     })
-    //     .on("mouseleave", function () {
-    //       play();
-    //     });
-    // }
-
-    // Enable autoplay
     tick();
 
     options.afterSetup.call(slider[0]);
-
-    // Private methods
-    // Animation complete callback
     function animationCallback() {
       current = nextSlide;
 
@@ -205,8 +181,6 @@
 
       options.afterChange.call(slider[0]);
     }
-
-    // The main animation function
     function run() {
       if (running || orgNumSlides <= 1) {
         return;
@@ -234,12 +208,9 @@
 
       tick();
     }
-
-    // Set the autoplay timer
     function tick() {
       clearTimeout(timer);
 
-      // Check if autoplay is enabled
       if (options.interval && orgNumSlides > 1) {
         timer = setTimeout(function () {
           if (options.reverse) {
@@ -250,8 +221,6 @@
         }, options.interval);
       }
     }
-
-    // Public methods
     function currentSlide() {
       return current;
     }
@@ -296,6 +265,7 @@
     return this.each(function () {
       let slider = $(this),
         nothing = new ashfak(slider, options);
+      return nothing;
     });
   };
 });
